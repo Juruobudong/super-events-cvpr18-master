@@ -61,18 +61,25 @@ elif args.dataset == 'charades':
     # rgb_root = '/ssd2/charades/i3d_rgb'
     # flow_root = '/ssd2/charades/i3d_flow'
     classes = 157
-elif args.dataset == 'ava':
-    from ava_i3d_per_video import Ava as Dataset
-    from ava_i3d_per_video import ava_collate_fn as collate_fn
-    train_split = 'data/ava.json'
-    test_split = train_split
-    rgb_root = '/ssd2/ava/i3d_rgb'
-    flow_root = '/ssd2/ava/i3d_flow'
-    classes = 80
-    # reduce batchsize as AVA videos are very long
-    batch_size = 6
-    
-
+elif args.dataset == 'NBA':
+    from NBA_i3d_per_video import NBA as Dataset
+    from NBA_i3d_per_video import NBA_collate_fn as collate_fn
+    train_split = 'data/NBA.json'
+    test_split = 'data/NBA.json'
+    rgb_root = '/gpfs/home/lianghe/xuexinwei/xxw/super-events-cvpr18-master/data/NBA/i3d_rgb'
+    flow_root = '/gpfs/home/lianghe/xuexinwei/xxw/super-events-cvpr18-master/data/NBA/i3d_flow'
+    classes = 30
+    batch_size = 2
+# elif args.dataset == 'ava':
+#     from ava_i3d_per_video import Ava as Dataset
+#     from ava_i3d_per_video import ava_collate_fn as collate_fn
+#     train_split = 'data/ava.json'
+#     test_split = train_split
+#     rgb_root = '/ssd2/ava/i3d_rgb'
+#     flow_root = '/ssd2/ava/i3d_flow'
+#     classes = 80
+#     # reduce batchsize as AVA videos are very long
+#     batch_size = 6
 
 def sigmoid(x):
     return 1/(1+np.exp(-x))
